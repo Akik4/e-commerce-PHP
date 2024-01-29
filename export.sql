@@ -16,6 +16,8 @@
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 
+
+
 --
 -- Table structure for table `users`
 --
@@ -24,11 +26,11 @@ DROP TABLE IF EXISTS `users`;
 /*!40101 SET @saved_cs_client     = @@character_set_client */;
 /*!40101 SET character_set_client = utf8 */;
 CREATE TABLE `users` (
-  `id` int(11) NOT NULL AUTO_INCREMENT,
-  `username` varchar(255) NOT NULL,
-  `password` varchar(255) NOT NULL,
-  `created_at` datetime NOT NULL DEFAULT current_timestamp(),
-  PRIMARY KEY (`id`)
+                         `id` int(11) NOT NULL AUTO_INCREMENT,
+                         `username` varchar(255) NOT NULL,
+                         `password` varchar(255) NOT NULL,
+                         `created_at` datetime NOT NULL DEFAULT current_timestamp(),
+                         PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=latin1 COLLATE=latin1_swedish_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -36,17 +38,7 @@ CREATE TABLE `users` (
 -- Dumping data for table `users`
 --
 
-LOCK TABLES `users` WRITE;
-/*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES
-(1,'Bernard','935ceff4aa8ee47b714ad091e472141097aff801d092a5fcc885b2d9981987de','2024-01-29 11:55:22'),
-(2,'moi','3a3468fa89b2ab7cbfe5400858a8ec0066e9e8defa9a64c993b5f24210244df8','2024-01-29 12:13:16'),
-/*!40000 ALTER TABLE `users` ENABLE KEYS */;
-UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
-
-
-       --
+--
 -- Table structure for table `livres`
 --
 
@@ -72,10 +64,10 @@ CREATE TABLE `livres` (
 
 LOCK TABLES `livres` WRITE;
 /*!40000 ALTER TABLE `livres` DISABLE KEYS */;
-INSERT INTO `livres` VALUES
-                         (1,'How to make PHP ?',8.90,0,'2024-01-29 11:04:01',2),
+
 /*!40000 ALTER TABLE `livres` ENABLE KEYS */;
 UNLOCK TABLES;
+
 
 
 /*!40101 SET SQL_MODE=@OLD_SQL_MODE */;

@@ -11,7 +11,7 @@ include_once("../../src/session.php");
 </head>
 <body>
     <a href="index.php">Accueil</a>
-    <form action="" method="post">
+    <form action="../action/register.php" method="post">
         <input type="text" name="username" placeholder="Username">
         <input type="password" name="password" placeholder="password">
         <input type="submit" value="Register">
