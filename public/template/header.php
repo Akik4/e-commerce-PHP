@@ -23,8 +23,8 @@ if (isset($_SESSION["id"])){
     <div class="all-page">
         <header>
             <div id="nav-menu">
-                <H1>Bienvenue</H1>
-                <a href="/index.php">Accueuil</a>
+                <H1>Welcome</H1>
+                <a href="/index.php">Home</a>
             </div>
             <div id="user-nav">
                 <?php
