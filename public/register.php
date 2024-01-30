@@ -1,6 +1,6 @@
 <?php
 
-include_once "../src/utils.php";
+include_once './template/header.php';
 
 ?>
 
@@ -15,6 +15,8 @@ include_once "../src/utils.php";
     <title>Document</title>
 </head>
 <body>
+
+<div id="page-content-form">
     <form action="./action/register.php" class="register-form" METHOD="POST">
         <h1>REGISTER</h1>
         <input type="text" name="mail" placeholder="Mail..." required>
@@ -23,5 +25,6 @@ include_once "../src/utils.php";
         <input type="password" name="password_verify" placeholder="Verify password..." required>
         <input id="submit" type="submit" value="Submit">
     </form>
+</div>
 </body>
 </html>
