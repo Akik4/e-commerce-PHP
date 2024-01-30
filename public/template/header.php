@@ -20,10 +20,13 @@ if (isset($_SESSION["id"])){
 </head>
 <body>
 <div id="page">
-    <div class="test">
+    <div class="all-page">
         <header>
-            <H1>Bienvenue</H1>
-            <div>
+            <div id="nav-menu">
+                <H1>Bienvenue</H1>
+                <a href="/index.php">Accueuil</a>
+            </div>
+            <div id="user-nav">
                 <?php
                 if(!$isConnected):
                     ?>

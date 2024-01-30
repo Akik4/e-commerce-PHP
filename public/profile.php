@@ -10,7 +10,7 @@ if(isset($_GET['id']))
 <?php
         $profile = $data->getUser($_GET['id']);
     ?>
-            <div id="page-content">
+            <div id="profil-content">
                 <div id="profil-container">
                     <h1>PROFILE</h1>
                     <?php if($_GET['id'] == $_SESSION['id']): ?>
