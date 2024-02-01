@@ -11,7 +11,6 @@ include_once "./template/header.php";
         <?php
             $rows = $data->getRows('products');
             foreach ($rows as $row){
-//                var_dump($row);
                 ?>
             <div class="card">
                 <div class="visual">
@@ -22,6 +21,7 @@ include_once "./template/header.php";
                     <p><?= $row['price'] ?>$</p>
     <!--                <p>--><?php //= $row[''] ?><!--</p>-->
                     <p><?= $row['description'] ?></p>
+                    <a href="action/add-cart.php?id=<?= $row['id']?>">+ add to cart</a>
                 </div>
             </div>
                 <?php
