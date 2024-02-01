@@ -4,8 +4,24 @@ global $data;
 include_once "./template/header.php";
 ?>
 
-    <input type="search" name="search_bar">
-    <button>search</button>
+    <div class="searchBar">
+        <input type="search" name="search_bar">
+        <button>search</button>
+        <label for=""> search by category </label>
+            <select name="category" id="">
+                <?php
+                    $rows = $data->getRows('categories');
+                    foreach ($rows as $row)
+                    {
+                        ?>
+                        <option value="<?= $row['id']?>"><?= $row['name'] ?></option>
+                <?php
+                    }
+                ?>
+            </select>
+        <button>search</button>
+    </div>
+
     <div id="main-index">
         <div id="card-container">
         <?php
