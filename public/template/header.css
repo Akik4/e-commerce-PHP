@@ -383,4 +383,11 @@ footer
 .comment-container{
     display: flex;
     flex-direction: column;
+    border-bottom: solid;
+}
+
+.comment-form{
+    width: 30%;
+    display: flex;
+    flex-direction: column;
 }
