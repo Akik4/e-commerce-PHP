@@ -363,20 +363,24 @@ footer
 
 .card
 {
-    width: 15%;
+    width: 100%;
     height: 100%;
     border: 1px solid black;
 }
 
-.material-symbols-outlined {
-    font-variation-settings:
-    'FILL' 0,
-    'wght' 400,
-    'GRAD' 0,
-    'opsz' 24;
-  }
+.card-link{
+    text-decoration: none;
+    width: 15%;
+    color: black;
+}
 
-  .cart{
-    display:flex;
-    justify-content: center;
-  }
+.product-details{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+}
+
+.comment-container{
+    display: flex;
+    flex-direction: column;
+}

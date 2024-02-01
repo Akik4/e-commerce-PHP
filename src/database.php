@@ -116,6 +116,16 @@ class Database
         return $request->fetch();
     }
 
+    public function getComments($id)
+    {
+        global $PDO;
+        $request = $PDO->prepare("SELECT *, users.name as username FROM comment
+        JOIN users ON comment.user_id = users.id
+        WHERE product_id=? ORDER BY posted_date DESC;");
+        $request->execute([$id]);
+        return $request->fetchAll();
+    }
+
     public function getRows($table)
     {
         global $PDO;
