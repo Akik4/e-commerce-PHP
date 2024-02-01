@@ -178,4 +178,12 @@ class Database
         return $request->fetch();
     }
 
+    public function search($statement, $value_array = null)
+    {
+        global $PDO;
+        $request = $PDO->prepare($statement);
+        $request->execute($value_array);
+        return $request->fetchAll();
+    }
+
 }
