@@ -13,7 +13,9 @@ isset($_POST['password_verify']))
     {
         $password = hash("sha256", $_POST['password']);
         $data->insert("users", ['email', 'name' ,'role', 'password'], [$_POST['mail'], $_POST['username'], 1, $password]);
-        header('Location: ../menu.php');
+        $_SESSION["id"]=$user['id'];
+        $_SESSION['name']=$user['name'];
+        header('Location: ../index.php');
     } else {
         header('Location: ../register.php?error=1');
     }
