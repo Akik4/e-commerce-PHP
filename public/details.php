@@ -5,12 +5,14 @@ include_once "./template/header.php";
 $productId = $_GET['id'];
 $product = $data->getItem('products', $productId);
 $comments = $data->getComments($productId);
+$data->updateComments($productId);
 
 $productName = $product['name'];
 $productPrice = $product['price'];
 $productDescription = $product['description'];
 $productImage = $product['image_url'];
 $productRating = $product['star'];
+$canComment = $data->checkIfUserCanComment($_SESSION['id'], $_GET['id'])
 
 ?>
 <html>
@@ -28,12 +30,14 @@ $productRating = $product['star'];
         <p><?php echo $productPrice; ?> $</p>
         <p><?php echo $productDescription; ?></p>
         <p><?php echo $productRating; ?> / 5</p>
+        <?php if($isConnected): ?>
         <form action="./action/add-cart.php?id=<?= $_GET['id']?>" method="post"><input type="submit" value="ajouter au panier"></form>
+        <?php endif; ?>
         </div>
     </div>
     <div class="comments">
     <h3>Comments</h3>
-        <?php if($isConnected){ ?>
+        <?php if($isConnected && $canComment){ ?>
             <div class="add-comments">
                 <form action="./action/comment.php?id=<?=$_GET['id']?>" class="comment-form" METHOD="POST">
                     <label for="text">Enter your experience here :</label>

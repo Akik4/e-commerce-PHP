@@ -178,4 +178,23 @@ class Database
         return $request->fetch();
     }
 
+    public function checkIfUserCanComment($userId, $productId)
+    {
+        global $PDO;
+
+        $request = $PDO->prepare("SELECT EXISTS (
+            SELECT 1
+            FROM Commands as c
+            JOIN products_command as pc ON c.id = pc.command_id
+            WHERE c.user_id = ? 
+            AND pc.product_id = ?
+            AND c.status = 3
+        ) AS bought");
+        
+        $request->execute([$userId, $productId]);
+        $result = $request->fetch(PDO::FETCH_ASSOC);
+
+    return $result['bought'];
+    }
+
 }
