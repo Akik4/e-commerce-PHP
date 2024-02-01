@@ -13,12 +13,13 @@ if(isset($_GET['id']))
             isset($_POST['stock']) &&
             isset($_POST['price']) &&
             isset($_POST['status']) &&
-            isset($_POST['category']))
+            isset($_POST['category']) &&
+            isset($_POST['img_url']))
         {
             $data->insert("products",
-                ["name", "description", "price", "stock", "category","status",],
+                ["name", "description", "price", "stock", "category","status", "image_url"],
                 [$_POST['name_product'], $_POST['description'], $_POST['price'],
-                    $_POST['stock'],  $_POST['category'], $_POST['status']]);
+                    $_POST['stock'],  $_POST['category'], $_POST['status'], $_POST['img_url']]);
 
             header("Location: /admin/products.php");
         } else {
@@ -32,12 +33,14 @@ if(isset($_GET['id']))
             isset($_POST['stock']) &&
             isset($_POST['price']) &&
             isset($_POST['status']) &&
-            isset($_POST['category']))
+            isset($_POST['category']) &&
+            isset($_POST['img_url']))
+
         {
             $data->update("products",
-                ["name", "description", "price", "stock", "category","status",],
+                ["name", "description", "price", "stock", "category","status", "image_url"],
                 [$_POST['name_product'], $_POST['description'], $_POST['price'],
-                    $_POST['stock'],  $_POST['category'], $_POST['status'], $_GET['id']], ["id"]);
+                    $_POST['stock'],  $_POST['category'], $_POST['status'], $_POST['img_url'], $_GET['id']], ["id"]);
 
             header("Location: /admin/products.php");
         } else {

@@ -55,7 +55,18 @@ if(isset($_GET['id']))
                     <p>Total : <?=number_format($price, 2, ',', ' ');?>$</p>
                             <form action="action/command-add.php" method="POST">
                                 <input name="address" type="text">
-                                <input type="submit" >Passer commander</input>
+                                <input type="submit" value="Passer commander">
+                                <?php
+                                    if(isset($_GET['error'])){
+                                        if($_GET['error'] = 1)
+                                        {
+                                            ?>
+                                                <p style="color:red">Certains articles ne sont plus en stocks</p>
+                                            <?php
+                                        }
+                                    }
+
+                                ?>
                             </form>
                             <?php
                         }

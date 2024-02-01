@@ -21,34 +21,36 @@ if(isset($_GET['orderby']))
     </div>
     <div class="list">
         <div class="list-container">
-            <table>
-                <thead>
-                <tr>
-                    <th></th><th>Id</th><th>user_id</th><th>status</th><th>address</th><th><a href="?orderby=<?=$str_order?>">date_updated</a></th>
-                </tr>
-                </thead>
-                <tbody>
-                <?php
-                if(empty($_GET['orderby']))
-                {
-                    $commands = $data->getRows("commands");
-                } else{
-                    $commands = $data->getRowsOrderBy("commands", $str_order);
-                }
-                foreach($commands as $command){
-                    ?>
+            <div class="items-container">
+                <table>
+                    <thead>
                     <tr>
-                        <td><a href="/admin/commands.form.php?id=<?= $command['id'] ?>">E</a></td>
-                       <td> <?php echo $command['id']; ?></td>
-                       <td> <?php echo $command['user_id']; ?></td>
-                       <td> <?php echo $command['status'];?></td>
-                        <td> <?php echo $command['address']; ?></td>
-                        <td> <?php echo $command['date_updated'];?></td>
+                        <th></th><th>Id</th><th>user_id</th><th>status</th><th>address</th><th><a href="?orderby=<?=$str_order?>">date_updated</a></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <?php
+                    if(empty($_GET['orderby']))
+                    {
+                        $commands = $data->getRows("commands");
+                    } else{
+                        $commands = $data->getRowsOrderBy("commands", $str_order);
+                    }
+                    foreach($commands as $command){
+                        ?>
+                        <tr>
+                            <td><a href="/admin/commands.form.php?id=<?= $command['id'] ?>">E</a></td>
+                           <td> <?php echo $command['id']; ?></td>
+                           <td> <?php echo $command['user_id']; ?></td>
+                           <td> <?php echo $command['status'];?></td>
+                            <td> <?php echo $command['address']; ?></td>
+                            <td> <?php echo $command['date_updated'];?></td>
 
-                <?php } ?>
-                </tr>
-                </tbody>
-            </table>
+                    <?php } ?>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
 
         </div>
     </div>

@@ -20,6 +20,7 @@ if(isset($_GET['id']))
         $price = $product['price'];
         $status = $product['status'];
         $category = $product['category'];
+        $img_url = $product['image_url'];
     }
 }
 ?>
@@ -48,6 +49,9 @@ if(isset($_GET['id']))
 
                     <label for=""> statut </label>
                     <input type="text" name="status" value="<?= $status ?>">
+
+                    <label for=""> image-url </label>
+                    <input type="text" name="img_url" value="<?= $img_url ?>">
 
                     <label for=""> category </label>
                     <select name="category" id="" value="<?= $category ?>">

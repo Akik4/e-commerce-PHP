@@ -16,6 +16,7 @@ include_once "menu.php";
                 <tr>
                     <th></th></th><th>Id</th><th>Name</th><th>description</th>
                     <th>stock</th><th>price</th><th>status</th><th>star</th>
+                    <th>image</th>
                     <th>category</th>
                 </tr>
                 </thead>
@@ -33,6 +34,7 @@ include_once "menu.php";
                         <td> <?=  $product['status']; ?> </td>
                         <td> <?=  $product['star']; ?> </td>
                         <td> <?=  $product['category']; ?> </td>
+                        <td> <?=  $product['image_url']; ?> </td>
                 <?php } ?>
                     </tr>
                 </tbody>

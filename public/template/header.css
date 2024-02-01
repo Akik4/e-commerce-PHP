@@ -391,3 +391,10 @@ footer
     display: flex;
     flex-direction: column;
 }
+
+.items-container
+{
+    overflow-x: scroll;
+    height: 100%;
+    white-space: nowrap;
+}
