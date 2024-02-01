@@ -8,7 +8,7 @@ if(isset($_POST['mail']) &&($_POST['password'])){
     if(count($user) > 0){
         $_SESSION["id"]=$user['id'];
         $_SESSION['name']=$user['name'];
-        header('Location: ../index.php');
+        header('Location: /index.php');
     } else
     {
         header('Location: ../login.php?error=1');

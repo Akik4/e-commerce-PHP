@@ -18,7 +18,7 @@ if(isset($_GET['id']))
                     <?php endif; ?>
                     <h2>Info</h2>
                     <p>Username : <?= $profile['username']; ?></p>
-                    <p>ID : <?= $profile['id']; ?></p>
+                    <p>ID : <?= $_GET['id']; ?></p>
                     <p>Role : <?= $profile['rolename']; ?></p>
                     <p>Contact : <?= $profile['email']; ?></p>
                     <h2>Edit</h2>

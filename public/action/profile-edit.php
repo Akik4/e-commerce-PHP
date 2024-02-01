@@ -21,6 +21,6 @@ if(isset($_POST['value']) |
     }
     $password = hash("sha256", $_POST['password']);
 
-    $data->updateUser($password, $item, $value, $_SESSION['id']);
+    $data->update("users", [$item],[$value, $_SESSION['id'], $password], ['id', 'password']);
 }
 header("Location: ../profile.php?id=". $_SESSION["id"]);

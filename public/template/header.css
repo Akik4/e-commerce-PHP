@@ -64,7 +64,7 @@ header h1 {
 #user-nav {
     display: flex;
     height: 100%;
-    width: 10%;
+    width: 20%;
     justify-content: end;
     align-items: center;
 }
@@ -181,6 +181,7 @@ footer
     background: ghostwhite;
 }
 
+
 .register-form input
 {
     border: transparent;
@@ -193,4 +194,176 @@ footer
 {
     background: seagreen;
     color: white;
+}
+
+#page-admin
+{
+    flex: 1 1 auto;
+    display: flex;
+}
+
+.menu
+{
+    width: 10%;
+    background: rgb(219, 219, 219);
+    border: solid 1px rgb(0,0,0, 40%);
+}
+
+.menu h1
+{
+    text-align: center;
+}
+
+.menu-item
+{
+    display: flex;
+    flex-flow: column;
+}
+
+.menu-item a
+{
+    transition: 0.5s;
+    padding: 20px;
+    text-decoration: none;
+    color: black
+    /*border-bottom: solid 1px black;*/
+}
+
+.menu-item a:hover
+{
+    background: rgb(168, 168, 168);
+}
+
+.wrapper
+{
+    width: 100%;
+    display: flex;
+    flex-flow: column;
+}
+
+.input {
+    flex: 0 1 40px;
+}
+
+.list
+{
+    flex: 1 1 auto;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.list-container
+{
+    height: 80%;
+    width: 80%;
+    border: solid 1px rgba(0,0,0, 80%);
+}
+
+.list-container table
+{
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 0.8rem;
+    letter-spacing: 1px;
+}
+.list-container th, .list-container td{
+    border: 1px solid rgb(160, 160, 160);
+    padding: 8px 10px;
+    font-size: 20px;
+}
+
+.list-item
+{
+    display: flex;
+    border-bottom: 1px solid black;
+}
+
+.list-item p
+{
+    margin: 5px;
+}
+
+.user-form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height:40vh;
+}
+
+.label{
+    display:flex;
+    flex-direction: column;
+}
+
+#form
+{
+    height: 60%;
+    width: 60%;
+    border: 1px solid black;
+    border-radius: 20px;
+}
+
+#form h1
+{
+    text-align: center;
+    margin-bottom: 2%;
+}
+
+.form-container
+{
+    height: 100%;
+}
+
+.form-container form
+{
+    display: flex;
+    flex-flow: column;
+    height: calc(100% - 200px);
+}
+
+.form-content
+{
+    flex: 1 1 auto;
+    display: flex;
+    flex-flow: column;
+}
+
+#form-footer
+{
+    display: flex;
+    justify-content: end;
+    flex: 0 1 auto;
+}
+
+#form-footer input
+{
+    margin-right: 5%;
+}
+
+#main-index
+{
+    flex: 1 1 auto;
+}
+
+#card-container
+{
+    margin-top: 20px;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    height: 40%;
+
+}
+
+.visual{
+    height: 60%;
+    border-bottom: 2px solid black;
+}
+
+.card
+{
+    width: 15%;
+    height: 100%;
+    border: 1px solid black;
 }

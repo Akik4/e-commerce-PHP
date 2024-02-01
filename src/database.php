@@ -19,12 +19,67 @@ class Database
         }
     }
 
-    public function insert_user($username, $email, $password)
+
+    public function insert($table, $fields, $values)
     {
         global $PDO;
 
-        $request = $PDO->prepare("INSERT INTO users(name, email, role, password) VALUE (:username, :email, 1, :password)");
-        $request->execute([":username" => $username, ":email" => $email, ":password" => hash("sha256", $password)]);
+        $str_field = "";
+        $str_value = "";
+
+        foreach($fields as $field)
+        {
+            if(end($fields) == $field)
+            {
+                $str_field .= "$field";
+                $str_value .= "?";
+            } else {
+                $str_field .= "$field ,";
+                $str_value .= "?,";
+
+            }
+        }
+
+        $request = $PDO->prepare("INSERT INTO $table($str_field) VALUE ($str_value)");
+        $request->execute($values);
+
+    }
+
+    public function update($table, $fields, $values, $wheres = null)
+    {
+        global $PDO;
+
+        $str_field = "";
+        foreach($fields as $field)
+        {
+            if(end($fields) == $field)
+            {
+                $str_field .= "$field = ?";
+            } else {
+                $str_field .= "$field = ? ,";
+            }
+        }
+        $str_where = "";
+        foreach($wheres as $where)
+        {
+            if(end($wheres) == $where)
+            {
+                $str_where .= "$where = ?";
+            } else {
+                $str_where .= "$where = ? AND ";
+            }
+        }
+
+        $request = $PDO->prepare("UPDATE $table SET $str_field WHERE $str_where");
+        $request->execute($values);
+    }
+
+    public function remove($table, $id)
+    {
+        global $PDO;
+
+        $statement = $PDO->prepare("DELETE FROM $table WHERE id=?");
+        $statement->execute([$id]);
     }
 
     public function isExistingUser($email, $password) : array
@@ -44,7 +99,7 @@ class Database
     {
         global $PDO;
 
-        $request = $PDO->prepare("Select *, roles.name as rolename, users.name as username from users JOIN roles ON role=roles.id WHERE users.id=:id");
+        $request = $PDO->prepare("Select *, roles.name as rolename, users.name as username, roles.id as roleid from users JOIN roles ON role=roles.id WHERE users.id=:id");
         $request->execute([":id" => $id]);
         if($request->rowCount() == 0)
         {
@@ -53,11 +108,20 @@ class Database
         return $request->fetch();
     }
 
-    public function updateUser($password, $item, $value, $id)
+    public function getItem($table, $id)
     {
         global $PDO;
-
-        $request = $PDO->prepare("UPDATE users set $item=:value where id=:id and password=:password");
-        $request->execute([":value" => $value, ":id" => $id, ":password" =>$password]);
+        $request = $PDO->prepare("Select * From $table where id=?");
+        $request->execute([$id]);
+        return $request->fetch();
     }
+
+    public function getRows($table)
+    {
+        global $PDO;
+        $request = $PDO->prepare("Select * From $table");
+        $request->execute();
+        return $request->fetchAll();
+    }
+
 }
