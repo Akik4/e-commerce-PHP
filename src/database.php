@@ -142,4 +142,13 @@ class Database
         return $request->fetchAll();
     }
 
+    public function searching($value)
+    {
+    if(isset($value)){
+        global $PDO;
+        $request = $PDO->prepare("SELECT * FROM products WHERE name LIKE '%$value%'");
+        $request->execute();
+        return $request->fetchAll();
+    }
+  }
 }

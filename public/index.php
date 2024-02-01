@@ -5,21 +5,25 @@ include_once "./template/header.php";
 ?>
 
     <div class="searchBar">
-        <input type="search" name="search_bar">
-        <button>search</button>
-        <label for=""> search by category </label>
-            <select name="category" id="">
-                <?php
-                    $rows = $data->getRows('categories');
-                    foreach ($rows as $row)
-                    {
-                        ?>
-                        <option value="<?= $row['id']?>"><?= $row['name'] ?></option>
-                <?php
-                    }
-                ?>
-            </select>
-        <button>search</button>
+
+        <form action="action/search.php" method="POST">
+            <input type="search" name="search_bar">
+            <input type="submit">
+            <label for=""> search by category </label>
+                <select name="category" id="">
+                    <?php
+                        $rows = $data->getRows('categories');
+                        foreach ($rows as $row)
+                        {
+                            ?>
+                            <option value="<?= $row['id']?>"><?= $row['name'] ?></option>
+                    <?php
+                        }
+                    ?>
+                </select>
+            <input type="submit">
+        </form>
+
     </div>
 
     <div id="main-index">
