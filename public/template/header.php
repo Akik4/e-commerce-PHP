@@ -24,6 +24,7 @@ if (isset($_SESSION["id"])){
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
     <link rel="stylesheet" href="/template/header.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
 </head>
 <body>
 <div id="page">
@@ -39,11 +40,11 @@ if (isset($_SESSION["id"])){
                     ?>
                     <a href="register.php">register</a>
                     <a href="login.php">login</a>
-
                 <?php
                 else:
                     ?>
                     <a href="/profile.php?id=<?= $_SESSION['id']?>"><?= $_SESSION['name'] ?></a>
+                    <a href="basket.php" class="cart"><span class="material-symbols-outlined">shopping_cart</span></a>
                     <?php
                         if($admin):
                     ?>
