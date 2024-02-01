@@ -32,7 +32,7 @@ if(isset($_GET['orderby']))
                     <?php
                     if(empty($_GET['orderby']))
                     {
-                        $commands = $data->getRows("commands");
+                        $commands = $data->search("SELECT * FROM commands ORDER BY date_updated DESC");
                     } else{
                         $commands = $data->getRowsOrderBy("commands", $str_order);
                     }
