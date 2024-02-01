@@ -24,11 +24,10 @@ include_once "menu.php";
                     <td><?= $user['id'];?></td>
                     <td><?= $user['name'];?></td>
                     <td><?= $user['email'];?></td>z
-                    <td><?php if($user['role'] == 1){
-                        echo 'admin';
-                        } else {
-                        echo 'user';
-                    }
+                    <td><?php
+                        $name = $data->linkTable("roles.name", "users", "roles", "t1.role", "roles.id", $user['id']);
+                        echo $name[0]['name'];
+
                         }?></td>
                 </tr>
                 </tbody>

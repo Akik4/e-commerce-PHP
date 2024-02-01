@@ -35,8 +35,15 @@ if(isset($_GET['id']))
         <div class="label">
             <label for="">role</label>
             <select name="role" id="" value="<?= $role?>">
-                <option value="1">1</option>
-                <option value="2">2</option>
+                <?php
+                $rows = $data->getRows('roles');
+                foreach ($rows as $row)
+                {
+                    ?>
+                    <option value="<?= $row['id']?>"><?= $row['name'] ?></option>
+                    <?php
+                }
+                ?>
             </select>
         </div>
         <div class="label">
