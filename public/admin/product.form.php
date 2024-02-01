@@ -1,6 +1,27 @@
 <?php
 global $data;
 include_once "menu.php";
+
+if(isset($_GET['id']))
+{
+    $name = "";
+    $desc = "";
+    $stock = "";
+    $price = "";
+    $status = "";
+    $category = "";
+    if($_GET['id'] > 0)
+    {
+        $product = $data->getItem("products", $_GET['id']);
+
+        $name = $product['name'];
+        $desc = $product['description'];
+        $stock = $product['stock'];
+        $price = $product['price'];
+        $status = $product['status'];
+        $category = $product['category'];
+    }
+}
 ?>
 
 
@@ -9,27 +30,27 @@ include_once "menu.php";
         <div id="form">
             <h1>PRODUCTS FORM</h1>
             <div class="form-container">
-            <form action="/admin/action/products.php" method="POST">
+            <form action="/admin/action/products.php?id=<?= $_GET['id'] ?>" method="POST">
                 <div class="form-content">
 
                     <label for="">Product name </label>
-                    <input type="text" name="name_product">
+                    <input type="text" name="name_product" value="<?= $name ?>">
 
                     <label for=""> description </label>
-                    <textarea name="description" id="" cols="10" rows="10"></textarea>
+                    <textarea name="description" id="" cols="10" rows="10" ><?= $desc ?></textarea>
 
                     <label for=""> stock </label>
-                    <input type="number" name="stock">
+                    <input type="number" name="stock" value="<?= $stock ?>">
 
 
                     <label for=""> price </label>
-                    <input type="text" name="price">
+                    <input type="text" name="price" value="<?= $price ?>">
 
                     <label for=""> statut </label>
-                    <input type="text" name="status">
+                    <input type="text" name="status" value="<?= $status ?>">
 
                     <label for=""> category </label>
-                    <select name="category" id="">
+                    <select name="category" id="" value="<?= $category ?>">
                         <?php
                             $rows = $data->getRows('categories');
                             foreach ($rows as $row)

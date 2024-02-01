@@ -7,7 +7,7 @@ include_once "menu.php";
 <div class="wrapper">
 
     <div class="input">
-        <a href="product.form.php">ADD</a>
+        <a href="product.form.php?id=0">ADD</a>
     </div>
     <div class="list">
         <div class="list-container">
@@ -24,7 +24,7 @@ include_once "menu.php";
                     foreach($data->getRows("products") as $product){
                         ?>
                     <tr>
-                        <td><a href="/admin/action/remove.php?type=products&id=<?=$product['id']?>">x</a></td>
+                        <td><a href="/admin/product.form.php?&id=<?=$product['id']?>">E </a><a href="/admin/action/remove.php?type=products&id=<?=$product['id']?>">X</a></td>
                         <td> <?=  $product['id']; ?> </td>
                         <td> <?=  $product['name']; ?> </td>
                         <td> <?=  $product['description']; ?> </td>
