@@ -10,6 +10,7 @@ $productName = $product['name'];
 $productPrice = $product['price'];
 $productDescription = $product['description'];
 $productImage = $product['image_url'];
+$productRating = $product['star'];
 
 ?>
 <html>
@@ -26,6 +27,7 @@ $productImage = $product['image_url'];
         <h1><?php echo $productName; ?></h1>
         <p><?php echo $productPrice; ?> $</p>
         <p><?php echo $productDescription; ?></p>
+        <p><?php echo $productRating; ?> / 5</p>
         </div>
     </div>
     <div class="comments">

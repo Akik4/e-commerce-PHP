@@ -134,4 +134,18 @@ class Database
         return $request->fetchAll();
     }
 
+    public function updateComments($id)
+    {
+        global $PDO;
+        $request = $PDO->prepare("UPDATE products
+        SET star = (
+            SELECT AVG(star)
+            FROM comment
+            WHERE comment.product_id = ?
+        );
+        ");
+        $request->execute([$id]);
+        return $request->fetch();
+    }
+
 }
