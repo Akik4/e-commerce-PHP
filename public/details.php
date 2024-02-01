@@ -25,6 +25,7 @@ $productImage = $product['image_url'];
         <h1><?php echo $productName; ?></h1>
         <p><?php echo $productPrice; ?> $</p>
         <p><?php echo $productDescription; ?></p>
+        <button><span class="material-symbols-outlined">add_shopping_cart</span></button>
         </div>
     </div>
     <div class="comments">
