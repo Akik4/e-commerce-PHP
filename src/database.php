@@ -134,6 +134,37 @@ class Database
         return $request->fetchAll();
     }
 
+    public function linkTable($select, $table, $join_table, $value, $value_join, $id)
+    {
+        global $PDO;
+        $request = $PDO->prepare("Select $select FROM $table as t1 INNER JOIN $join_table on $value=$value_join WHERE t1.id = $id");
+        $request->execute();
+        return $request->fetchAll();
+    }
+
+    public function getRowsBy($table, $field,$id)
+    {
+        global $PDO;
+        $request = $PDO->prepare("Select * From $table where $field=$id");
+        $request->execute();
+        return $request->fetchAll();
+    }
+
+    public function getLastRowBy($table, $field, $id)
+    {
+        global $PDO;
+        $request = $PDO->prepare("Select * From $table where $field=$id ORDER BY id DESC limit 1 ");
+        $request->execute();
+        return $request->fetch();
+    }
+
+    public function getRowsOrderBy($table, $order)
+    {
+        global $PDO;
+        $request = $PDO->prepare("Select * From $table order by date_updated $order");
+        $request->execute();
+        return $request->fetchAll();
+    }
     public function updateComments($id)
     {
         global $PDO;

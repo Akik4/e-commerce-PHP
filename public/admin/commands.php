@@ -3,23 +3,56 @@
 global $data;
 include_once "menu.php";
 
+$str_order = "ASC";
+if(isset($_GET['orderby']))
+{
+    if($_GET['orderby'] == "DESC")
+    {
+        $str_order = "ASC";
+    } else {
+        $str_order = "DESC";
+    }
+}
 ?>
 <div class="wrapper">
 
-    <div class="input"> </div>
+    <div class="input">
+<!--        <a href="categories.form.php?id=0">ADD</a>-->
+    </div>
     <div class="list">
         <div class="list-container">
-            <ul>
+            <table>
+                <thead>
+                <tr>
+                    <th></th><th>Id</th><th>user_id</th><th>status</th><th>address</th><th><a href="?orderby=<?=$str_order?>">date_updated</a></th>
+                </tr>
+                </thead>
+                <tbody>
                 <?php
-                foreach($data->getRows("commands") as $command){
+                if(empty($_GET['orderby']))
+                {
+                    $commands = $data->getRows("commands");
+                } else{
+                    $commands = $data->getRowsOrderBy("commands", $str_order);
+                }
+                foreach($commands as $command){
                     ?>
-                    <li>
-                        <?php echo $command['id'];echo $command['user_id']; echo $command['status'];?>
-                    </li>
+                    <tr>
+                        <td><a href="/admin/commands.form.php?id=<?= $command['id'] ?>">E</a></td>
+                       <td> <?php echo $command['id']; ?></td>
+                       <td> <?php echo $command['user_id']; ?></td>
+                       <td> <?php echo $command['status'];?></td>
+                        <td> <?php echo $command['address']; ?></td>
+                        <td> <?php echo $command['date_updated'];?></td>
+
                 <?php } ?>
-            </ul>
+                </tr>
+                </tbody>
+            </table>
+
         </div>
     </div>
 
 </div>
-
+</body>
+</html>

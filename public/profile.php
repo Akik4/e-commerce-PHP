@@ -37,8 +37,48 @@ if(isset($_GET['id']))
                         </div>
                     </div>
                     <h2>Cart</h2>
-                    <h2>Commands</h2>
+                    <?php
+                        $price = 0.00;
+                        $rows = $data->getRowsBy("products_cart", "cart_id", $_SESSION['id']);
 
+                        foreach ($rows as $row):
+                            $item = $data->getItem( "products",$row['product_id']);
+                        ?>
+                            <p><?= $item['name']?> : <?= $item['price']?> <a href="action/cart-remove.php?id=<?= $row['id'] ?>">remove</a></p>
+
+                        <?php
+                            $price += $item['price'];
+                        endforeach;
+                        if(sizeof($rows) > 0)
+                        {
+                        ?>
+                    <p>Total : <?=number_format($price, 2, ',', ' ');?>$</p>
+                            <form action="action/command-add.php" method="POST">
+                                <input name="address" type="text">
+                                <input type="submit" >Passer commander</input>
+                            </form>
+                            <?php
+                        }
+                    ?>
+                    <h2>Commands</h2>
+                    <?php
+                    $rows = $data->getRowsBy("commands", "user_id", $_SESSION['id']);
+
+                    foreach ($rows as $row):
+                        $commands = $data->getRowsBy("products_command", 'command_id', $row['id']);
+
+                    foreach ($commands as $command)
+                            {
+                                echo $command['command_id'];
+                                $items = $data->getItem("products", $command['product_id']);
+                                echo $items['name']. "<br>";
+                            }
+                        ?>
+<!--                        <p>--><?php //= $item['name']?><!-- : --><?php //= $item['price']?><!-- <a href="action/cart-remove.php?id=--><?php //= $row['id'] ?><!--">remove</a></p>-->
+
+                        <?php
+                    endforeach;
+                    ?>
                 </div>
             </div>
             <footer>footer</footer>

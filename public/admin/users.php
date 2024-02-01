@@ -14,20 +14,20 @@ include_once "menu.php";
             <table>
                 <thead>
                 <tr>
-                    <th>Id</th><th>Name</th><th>email</th><th>role</th>
+                    <th></th><th>Id</th><th>Name</th><th>email</th><th>role</th>
                 </tr>
                 </thead>
                 <tbody>
                 <?php foreach ($data->getRows("users") as $user){ ?>
                 <tr>
+                    <td><a href="/admin/user.form.php?id=<?=$user['id']?>">E </a><a href="/admin/action/remove.php?type=users&id=<?=$user['id']?>">X</a></td>
                     <td><?= $user['id'];?></td>
                     <td><?= $user['name'];?></td>
                     <td><?= $user['email'];?></td>
-                    <td><?php if($user['role'] == 1){
-                        echo 'admin';
-                        } else {
-                        echo 'user';
-                    }
+                    <td><?php
+                        $name = $data->linkTable("roles.name", "users", "roles", "t1.role", "roles.id", $user['id']);
+                        echo $name[0]['name'];
+
                         }?></td>
                 </tr>
                 </tbody>
