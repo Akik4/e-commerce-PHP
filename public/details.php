@@ -28,6 +28,7 @@ $productRating = $product['star'];
         <p><?php echo $productPrice; ?> $</p>
         <p><?php echo $productDescription; ?></p>
         <p><?php echo $productRating; ?> / 5</p>
+        <form action="/action/add-cart.php"><input type="submit" value="ajouter au panier"></form>
         </div>
     </div>
     <div class="comments">
