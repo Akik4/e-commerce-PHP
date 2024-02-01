@@ -36,8 +36,8 @@ include_once "./template/header.php";
             }
             foreach ($rows as $row){
                 ?>
-                <a href="details.php?id=<?= $row['id'] ?>" class="card-link">
                     <div class="card">
+                    <a href="details.php?id=<?= $row['id'] ?>" class="card-link">
                         <div class="visual">
                             <img src="<?= $row['image_url']?>" height="100%" width="100%">
                         </div>
@@ -48,8 +48,8 @@ include_once "./template/header.php";
                             <p><?= $row['description'] ?></p>
                             <a href="action/add-cart.php?id=<?= $row['id']?>">+ add to cart</a>
                         </div>
+                    </a>
                     </div>
-                </a>
 
 
                 <?php
