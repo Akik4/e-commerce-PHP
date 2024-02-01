@@ -22,7 +22,6 @@ include_once "./template/header.php";
                     <p><?= $row['price'] ?>$</p>
     <!--                <p>--><?php //= $row[''] ?><!--</p>-->
                     <p><?= $row['description'] ?></p>
-                    <button><span class="material-symbols-outlined">add_shopping_cart</span></button>
                 </div>
             </div>
                 <?php
