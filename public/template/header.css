@@ -363,7 +363,24 @@ footer
 
 .card
 {
-    width: 15%;
+    width: 100%;
     height: 100%;
     border: 1px solid black;
+}
+
+.card-link{
+    text-decoration: none;
+    width: 15%;
+    color: black;
+}
+
+.product-details{
+    display: flex;
+    flex-direction: row;
+    justify-content:space-evenly;
+}
+
+.comment-container{
+    display: flex;
+    flex-direction: column;
 }
