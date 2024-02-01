@@ -32,15 +32,18 @@ $productRating = $product['star'];
     </div>
     <div class="comments">
     <h3>Comments</h3>
-        <div class="add-comments">
-            <form action="./action/comment.php?id=<?=$_GET['id']?>" class="comment-form" METHOD="POST">
-                <label for="text">Enter your experience here :</label>
-                <input type="text" name="comment" required>
-                <label for="star">0-5:</label>
-                <input type="range" name="star" min="0" max="5">
-                <input id="submit" type="submit" value="submit">
-            </form>
-        </div>
+        <?php if($isConnected){ ?>
+            <div class="add-comments">
+                <form action="./action/comment.php?id=<?=$_GET['id']?>" class="comment-form" METHOD="POST">
+                    <label for="text">Enter your experience here :</label>
+                    <input type="text" name="comment" required>
+                    <label for="star">0-5:</label>
+                    <input type="range" name="star" min="0" max="5">
+                    <input id="submit" type="submit" value="submit">
+                </form>
+            </div>
+        <?php }?>
+        
         <?php foreach ($comments as $row){ ?>
             <div class="comment-container">
                 <?php 

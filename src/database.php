@@ -141,10 +141,9 @@ class Database
         SET star = (
             SELECT AVG(star)
             FROM comment
-            WHERE comment.product_id = ?
-        );
+            WHERE comment.product_id =?) WHERE id = ?
         ");
-        $request->execute([$id]);
+        $request->execute([$id, $id]);
         return $request->fetch();
     }
 
