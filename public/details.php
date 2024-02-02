@@ -12,7 +12,9 @@ $productPrice = $product['price'];
 $productDescription = $product['description'];
 $productImage = $product['image_url'];
 $productRating = $product['star'];
-$canComment = $data->checkIfUserCanComment($_SESSION['id'], $_GET['id'])
+if(isset($_SESSION['id'])){
+    $canComment = $data->checkIfUserCanComment($_SESSION['id'], $_GET['id']);
+}
 
 ?>
 <html>
@@ -37,7 +39,8 @@ $canComment = $data->checkIfUserCanComment($_SESSION['id'], $_GET['id'])
     </div>
     <div class="comments">
     <h3>Comments</h3>
-        <?php if($isConnected && $canComment){ ?>
+        <?php if($isConnected){
+                    if($canComment) { ?>
             <div class="add-comments">
                 <form action="./action/comment.php?id=<?=$_GET['id']?>" class="comment-form" METHOD="POST">
                     <label for="text">Enter your experience here :</label>
@@ -47,7 +50,7 @@ $canComment = $data->checkIfUserCanComment($_SESSION['id'], $_GET['id'])
                     <input id="submit" type="submit" value="submit">
                 </form>
             </div>
-        <?php }?>
+        <?php } }?>
         
         <?php foreach ($comments as $row){ ?>
             <div class="comment-container">

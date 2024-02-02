@@ -13,14 +13,15 @@ if(isset($_GET['id']))
             <div id="profil-content">
                 <div id="profil-container">
                     <h1>PROFILE</h1>
-                    <?php if($_GET['id'] == $_SESSION['id']): ?>
+                    <?php if(isset($_SESSION["id"])) :if($_GET['id'] == $_SESSION['id']): ?>
                     <a href="./action/logout.php">logout</a>
-                    <?php endif; ?>
+                    <?php endif; endif;?>
                     <h2>Info</h2>
                     <p>Username : <?= $profile['username']; ?></p>
                     <p>ID : <?= $_GET['id']; ?></p>
                     <p>Role : <?= $profile['rolename']; ?></p>
                     <p>Contact : <?= $profile['email']; ?></p>
+                    <?php if(isset($_SESSION["id"])) :if($_GET['id'] == $_SESSION['id']): ?>
                     <h2>Edit</h2>
                     <div id="edit-container">
                         <div class="edit-cell">
@@ -92,6 +93,7 @@ if(isset($_GET['id']))
                     ?>
                 </div>
             </div>
+            <?php endif; endif; ?>
             <footer>footer</footer>
         </div>
     </div>
