@@ -81,9 +81,9 @@ if(isset($_GET['id']))
 
                     foreach ($commands as $command)
                             {
-                                echo $command['command_id'];
                                 $items = $data->getItem("products", $command['product_id']);
-                                echo $items['name']. "<br>";
+                                echo "Numéro de commande : ". $command['command_id'] . " | Produit :" . $items['name'] ."<br>";
+//                                echo "<br>";
                             }
                         ?>
 <!--                        <p>--><?php //= $item['name']?><!-- : --><?php //= $item['price']?><!-- <a href="action/cart-remove.php?id=--><?php //= $row['id'] ?><!--">remove</a></p>-->
