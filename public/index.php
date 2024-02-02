@@ -36,7 +36,11 @@ include_once "./template/header.php";
             }
             foreach ($rows as $row){
                 ?>
-                    <div class="card">
+                <?php if($row['stock'] == 0): ?>
+                    <div class="card-unavailable">
+                    <?php else: ?>
+                        <div class="card">
+                <?php endif; ?>
                     <a href="details.php?id=<?= $row['id'] ?>" class="card-link">
                         <div class="visual">
                             <img src="<?= $row['image_url']?>" height="100%" width="100%">
@@ -45,13 +49,15 @@ include_once "./template/header.php";
                         <div class="card-info">
                             <h4><?= $row['name'] ?></h4>
                             <?php if($row['sale'] == 0): ?>
-                            <p><?= $row['price'] ?>$</p>
+                                <p><?= $row['price'] ?>$</p>
                             <?php else: ?>
                                 <p style="text-decoration: line-through;"><?= $row['price'] ?>$</p>
-                                <p><?= ($row['price']*$row['sale']/100 )?>$</p>
-                            <?php endif; ?>    
-                            <p><?= $row['description'] ?></p>
-                            <a href="action/add-cart.php?id=<?= $row['id']?>">+ add to cart</a>
+                                <p><?= $row['price']-($row['price']*$row['sale']/100 )?>$</p>
+                            <?php endif; ?>
+                            <?php if($row['stock'] > 0): ?>  
+                                <a href="action/add-cart.php?id=<?= $row['id']?>">+ add to cart</a>
+                            <?php endif; ?>
+                            
                         </div>
                     </a>
                     </div>

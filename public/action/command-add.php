@@ -19,7 +19,7 @@ if(isset($_POST['address']) && $_POST['address'] != "")
     $missing = false;
     for ($i = 0; $i < count($output); $i++) {
         $product = $data->getItem("products", $result[$i]);
-        if($product['stock'] - $output[$result[$i]] <= 0)
+        if($product['stock'] - $output[$result[$i]] < 0)
         {
             $missing = true;
         }

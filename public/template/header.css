@@ -255,9 +255,8 @@ footer
 
 .list-container
 {
-    height: 80%;
     width: 80%;
-    border: solid 1px rgba(0,0,0, 80%);
+
 }
 
 .list-container table
@@ -266,17 +265,27 @@ footer
     border-collapse: collapse;
     font-size: 0.8rem;
     letter-spacing: 1px;
+    
 }
 .list-container th, .list-container td{
     border: 1px solid rgb(160, 160, 160);
     padding: 8px 10px;
     font-size: 20px;
+    max-width: 150px;
+
+    /* line-height: 10px; */
+}
+
+.product-table-container {
+    height: 100px;
+    overflow: scroll;
 }
 
 .list-item
 {
     display: flex;
     border-bottom: 1px solid black;
+    
 }
 
 .list-item p
@@ -367,6 +376,13 @@ footer
     height: 30%;
     border: 1px solid black;
 }
+.card-unavailable{
+    opacity: 50%;
+    width: 30%;
+    height: 30%;
+    border: 1px solid black;
+}
+
 
 .card-link{
     text-decoration: none;

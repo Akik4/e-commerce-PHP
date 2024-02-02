@@ -28,14 +28,22 @@ include_once "menu.php";
                         <td><a href="/admin/product.form.php?&id=<?=$product['id']?>">E </a><a href="/admin/action/remove.php?type=products&id=<?=$product['id']?>">X</a></td>
                         <td> <?=  $product['id']; ?> </td>
                         <td> <?=  $product['name']; ?> </td>
-                        <td> <?=  $product['description']; ?> </td>
+                        <td height="50"> 
+                            <div class="product-table-container">
+                                <?=  $product['description']; ?> 
+                            </div>
+                        </td>
                         <td> <?=  $product['stock']; ?> </td>
                         <td> <?=  $product['price']; ?> </td>
                         <td> <?=  $product['sale']; ?> </td>
                         <td> <?=  $product['status']; ?> </td>
                         <td> <?=  $product['star']; ?> </td>
                         <td> <?=  $product['category']; ?> </td>
-                        <td> <?=  $product['image_url']; ?> </td>
+                        <td> 
+                            <div class="product-table-container">
+                                <?=  $product['image_url']; ?> </td>
+                            </div> 
+                        </td>
                 <?php } ?>
                     </tr>
                 </tbody>

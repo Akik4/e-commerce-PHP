@@ -12,6 +12,8 @@ $productPrice = $product['price'];
 $productDescription = $product['description'];
 $productImage = $product['image_url'];
 $productRating = $product['star'];
+$productStock = $product['stock'];
+$productSale = $product['sale'];
 if(isset($_SESSION['id'])){
     $canComment = $data->checkIfUserCanComment($_SESSION['id'], $_GET['id']);
 }
@@ -24,15 +26,20 @@ if(isset($_SESSION['id'])){
 <body>
 <a href="index.php" style="text-decoration: none; color: black;"> < Retour</a>
     <div class="product-details">
-        <div>
-        <img src="<?= $productImage ?>" alt="<?= $productName ?>">
+        <div style="max-width: 60vw;">
+        <img src="<?= $productImage ?>" alt="<?= $productName ?>" style="max-width: 100%;">
         </div>
         <div>
-        <h1><?php echo $productName; ?></h1>
-        <p><?php echo $productPrice; ?> $</p>
-        <p><?php echo $productDescription; ?></p>
-        <p><?php echo $productRating; ?> / 5</p>
-        <?php if($isConnected): ?>
+        <h1><?=$productName; ?></h1>
+        <?php if($productSale == 0): ?>
+            <p><?= $productPrice ?>$</p>
+        <?php else: ?>
+            <p style="text-decoration: line-through;"><?= $productPrice ?>$</p>
+            <p><?= $productPrice-($productPrice*$productSale/100 )?>$</p>
+        <?php endif; ?>
+        <p><?= $productDescription; ?></p>
+        <p><?= $productRating; ?> / 5</p>
+        <?php if($isConnected && $productStock > 0): ?>
         <form action="./action/add-cart.php?id=<?= $_GET['id']?>" method="post"><input type="submit" value="ajouter au panier"></form>
         <?php endif; ?>
         </div>
