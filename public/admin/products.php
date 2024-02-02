@@ -15,7 +15,7 @@ include_once "menu.php";
                 <thead>
                 <tr>
                     <th></th></th><th>Id</th><th>Name</th><th>description</th>
-                    <th>stock</th><th>price</th><th>status</th><th>star</th>
+                    <th>stock</th><th>price</th><th>sale</th><th>status</th><th>star</th>
                     <th>category</th>
                     <th>image</th>
                 </tr>
@@ -31,6 +31,7 @@ include_once "menu.php";
                         <td> <?=  $product['description']; ?> </td>
                         <td> <?=  $product['stock']; ?> </td>
                         <td> <?=  $product['price']; ?> </td>
+                        <td> <?=  $product['sale']; ?> </td>
                         <td> <?=  $product['status']; ?> </td>
                         <td> <?=  $product['star']; ?> </td>
                         <td> <?=  $product['category']; ?> </td>

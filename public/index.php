@@ -44,7 +44,12 @@ include_once "./template/header.php";
 
                         <div class="card-info">
                             <h4><?= $row['name'] ?></h4>
+                            <?php if($row['sale'] == 0): ?>
                             <p><?= $row['price'] ?>$</p>
+                            <?php else: ?>
+                                <p style="text-decoration: line-through;"><?= $row['price'] ?>$</p>
+                                <p><?= ($row['price']*$row['sale']/100 )?>$</p>
+                            <?php endif; ?>    
                             <p><?= $row['description'] ?></p>
                             <a href="action/add-cart.php?id=<?= $row['id']?>">+ add to cart</a>
                         </div>

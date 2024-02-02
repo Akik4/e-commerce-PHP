@@ -18,6 +18,7 @@ if(isset($_GET['id']))
         $desc = $product['description'];
         $stock = $product['stock'];
         $price = $product['price'];
+        $sale = $product['sale'];
         $status = $product['status'];
         $category = $product['category'];
         $img_url = $product['image_url'];
@@ -46,6 +47,9 @@ if(isset($_GET['id']))
 
                     <label for=""> price </label>
                     <input type="text" name="price" value="<?= $price ?>">
+
+                    <label for=""> sale </label>
+                    <input type="text" name="sale" value="<?= $sale ?>">
 
                     <label for=""> statut </label>
                     <input type="text" name="status" value="<?= $status ?>">
