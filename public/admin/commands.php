@@ -25,24 +25,24 @@ if(isset($_GET['orderby']))
                 <table>
                     <thead>
                     <tr>
-                        <th></th><th>Id</th><th>user_id</th><th>status</th><th>address</th><th><a href="?orderby=<?=$str_order?>">date_updated</a></th>
+                        <th></th><th>Id</th><th>email</th><th>status</th><th>address</th><th><a href="?orderby=<?=$str_order?>">date_updated</a></th>
                     </tr>
                     </thead>
                     <tbody>
                     <?php
                     if(empty($_GET['orderby']))
                     {
-                        $commands = $data->search("SELECT * FROM commands ORDER BY date_updated DESC");
+                        $commands = $data->search("SELECT *, status.name as statusname FROM commands INNER JOIN users ON users.id=commands.user_id INNER JOIN status on status.id=commands.status_id order BY date_updated DESC");
                     } else{
-                        $commands = $data->getRowsOrderBy("commands", $str_order);
+                        $commands = $data->search("Select *, status.name as statusname From commands INNER JOIN users ON users.id=commands.user_id INNER JOIN status on status.id=commands.status_id order by date_updated  $str_order");
                     }
                     foreach($commands as $command){
                         ?>
                         <tr>
                             <td><a href="/admin/commands.form.php?id=<?= $command['id'] ?>">E</a></td>
                            <td> <?php echo $command['id']; ?></td>
-                           <td> <?php echo $command['user_id']; ?></td>
-                           <td> <?php echo $command['status'];?></td>
+                           <td> <?php echo $command['email']; ?></td>
+                           <td> <?php echo $command['statusname'];?></td>
                             <td> <?php echo $command['address']; ?></td>
                             <td> <?php echo $command['date_updated'];?></td>
 
